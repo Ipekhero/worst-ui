@@ -18,3 +18,5 @@
       targetWord2.style.letterSpacing = 1/myRange2.value * 300 + "px"
       targetWord2.style.fontSize = 1/myRange2.value * 500 + "pt"
     });
+
+    // bla bla bla
