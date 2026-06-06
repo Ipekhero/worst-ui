@@ -6,34 +6,32 @@
 }
 
 :root {
-  --sidebar-width: 250px;
+  --header-height: 12vh;
+  --purple-blue: rgb(124, 124, 255);
 }
 
 header {
   position: fixed;
   display: flex;
-  top: 0;
-  width: 100%;
-  height: 10vh;
-  background-color:rgb(255, 255, 255);
-  border-start-end-radius: 5rem;
-
+  align-items: center;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  margin-top: 1rem;
+  width: calc(100% - 2rem);
+  height: var(--header-height);
+  background-color:rgb(208, 255, 0);
+  z-index: 80; /* keep the header above section content (e.g. the image) */
 }
 
-header:hover{
-  position: fixed;
-  top: 0;
-  width: 100%;
-  height: 10vh;
-  background-color:rgb(247, 252, 255);
-  border-start-end-radius: rem;
-  transition: transform 0.3s ease-in-out;
-}
 
 section {
   height: 100vh;
-  padding-top: 1rem;
-  background-color: sandybrown;
+  padding-top: calc(var(--header-height) + 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgb(235, 235, 235);
+  overflow: hidden; /* keep each section's content inside its own box */
 }
 
 ul {
@@ -49,28 +47,30 @@ li {
 }
 
 h2 {
-  margin-top: 1rem;
+  font-family: "Bitcount Grid Double";
+  scroll-margin-top: calc(var(--header-height) + 2rem);
+  align-self: flex-start; /* keep the title left-aligned while siblings are centered */
   margin-left: 2rem;
-  font-family: "Bitcount+Grid+Double";
 }
 
 h1 {
-  margin-top: 2rem;
+  display: flex;
+  margin-top: 2.5rem;
   margin-left: 2rem;
   color: rgb(0, 0, 0);
-  font-family: "Sekuya";
-  font-size: 2rem;
+  font-family: "Bitcount Grid Double";
+  font-size: 3rem;
 }
 
 
 .my-new-button {
   display: inline-block;
   margin-top: 4rem;
-  margin-left: 1.8rem;
+  margin-left: 4rem;
   padding: 1rem 2rem;
   border-radius: 1rem;
-  background:radial-gradient(rgb(255, 68, 68), rgb(124, 124, 255));
-  color:red;
+  background:var(--purple-blue);
+  color:rgb(255, 255, 255);
   text-decoration: none;
   font-family:monospace;
 }
@@ -78,7 +78,7 @@ h1 {
 .my-new-button:hover {
   background:radial-gradient(black);
   color:rgb(255, 255, 255);
-  transform: scale(4);
+  transform: scale(5);
   font-family:monospace;
   border-radius: 1rem;
 }
@@ -86,7 +86,6 @@ h1 {
 .my-new-button-2 {
   display: inline-block;
   margin-top: 4rem;
-  margin-left: 1.8rem;
   border-radius: 1rem;
   padding: 5rem 5rem;
   background-color: black;
@@ -158,11 +157,8 @@ h1 {
 
 .div-flex {
   display: flex;
-  margin-bottom: 10vh;
   flex-wrap: wrap;
   gap: 20%;
-  max-height: 90vh; 
-  overflow-y:scroll;   
 }
 
 .blob-1 {
@@ -170,7 +166,7 @@ h1 {
   margin-right: 50px;
   margin-top: 20px;
   margin-bottom: 20px;
-  fill: #836CAF
+  fill: var(--purple-blue)
 }
 
 .blob-1:hover {
@@ -180,7 +176,7 @@ h1 {
 
 .blob-2 {
   margin: 50px;
-  fill: #836CAF;
+  fill: var(--purple-blue);
 }
 
 .blob-2:hover {
@@ -190,7 +186,7 @@ h1 {
 
 .blob-3 {
   margin: 50px;
-  fill: #836CAF;
+  fill: var(--purple-blue);
 }
 
 .blob-3:hover {
@@ -210,12 +206,14 @@ h1 {
 .image-container {
   position: relative;
   overflow: hidden; /* ensures nothing spills outside */
-  width: 100%;
+  width: calc(100% - 4rem);
+  height: 70vh;      /* fixed height so the image stays inside the section */
 }
 
 .full-img {
   width: 100%;
   height: 100%;
+  object-fit: cover; /* fill the container without overflowing or distorting */
   display: block;
 }
 
@@ -243,17 +241,66 @@ h1 {
   fill: none
 }
 
-#my-range1 {
-  width: 80%;    /* adjust as needed */
-  margin-left: 2rem;    /* space left/right around the slider */
-  margin-right: 2rem;  
+.slide-container {
+  position: relative;
+  width: calc(100% - 4rem);
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+  margin-top: 3rem;
 }
 
-#my-range2 {
-  width: 20%;    /* adjust as needed */
-  margin-left: 2rem;    /* space left/right around the slider */
-  margin-right: 2rem;  
+.slide-img {
+  width: 180px;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 1rem;
+  transition: transform 0.05s linear; /* smooths out the slider drag */
 }
+
+/* the boom is hidden until the slider reaches its max */
+#slide-right {
+  display: none;
+}
+
+#my-range1,
+#my-range2,
+#my-range3,
+#my-range5
+{
+  width: 60vw;
+  height: 2rem;
+  accent-color: var(--purple-blue); 
+  cursor: pointer;
+}
+
+#my-range4,
+#my-range6 {
+  accent-color: var(--purple-blue); 
+  width: 30vw;
+  cursor:grab;
+}
+
+#my-range7{
+  cursor:grabbing;
+  margin-top: 5rem;
+  rotate: 270deg;
+  accent-color: var(--purple-blue);
+}
+
+#my-range7-value {
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight:normal;
+  self-align: center;
+}
+
+.text {
+  margin-top: 1.5rem;
+  font-family: monospace;
+  font-size: 1.5rem;
+}
+
 
 #target-word {
   color: #f0eaea74;
@@ -264,14 +311,8 @@ h1 {
 #target-word2 {
   color: #000000;
   margin-left: 2rem;
+  font-family: monospace;
 }
-
-
-
-
-
-
-
 
 
 * {
@@ -281,7 +322,6 @@ h1 {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Segoe UI', sans-serif;
   background-color: #ffffff;
 }
 
@@ -297,10 +337,11 @@ body {
 /* --- Hamburger-Button (Label) oben rechts fixieren --- */
 .menu-toggle-btn {
   position: fixed;
-  top: 20px;
-  right: 20px;
+  top: 8vh;
+  transform: translateY(-50%);
+  right: 2rem;
   z-index: 100; /* Immer ganz oben über dem Menü */
-  font-size: 40px;
+  font-size: 30px;
   cursor: pointer;
   user-select: none;
   padding: 5px;
@@ -309,42 +350,33 @@ body {
 /* Standard: Zeige Hamburger (☰), verstecke das X (✕) */
 .menu-toggle-btn .icon-close {
   display: none;
-  color: rgb(255, 255, 255); /* Weiss, damit man es auf dem dunklen Menü sieht */
+  color: rgb(0, 0, 0); 
 }
 .menu-toggle-btn .icon-open {
   display: inline;
   color: black;
 }
 
-/* --- Das randabfallende Navigationsmenü --- */
 .full-screen-nav {
   position: fixed;
-  top: 0;
-  left: 80%;
-  min-width: 5vh; 
-  width: 20%; 
-     /* Randabfallend: Ganze Breite */
+  top: 1rem;
+  right: 1rem;
+  width: 15rem;
   height: 100vh;     /* Randabfallend: Ganze Höhe des Bildschirms */
-  background-color: rgba(30, 30, 40, 0.98); /* Dunkles Overlay */
+  background: white;
   z-index: 90;       /* Hinter dem Button, aber über dem Content */
-  
-  /* Flexbox zur perfekten Zentrierung der Links */
   justify-content: right;
   align-items: right;
-  padding-right: 1vh;  
-  /* [WICHTIG FÜR AUFTRAG] Standardmässig komplett ausgeblendet */
-  display: none; 
-}
-
-/* --- DIE MAGIE DES CODES (Der Zustand wird umgeschaltet) --- */
-
-/* WENN die Checkbox aktiviert ist (:checked), 
-   dann schalte das direkt nachfolgende Menü (~) auf sichtbar (display: flex) */
-.menu-hack-checkbox:checked ~ .full-screen-nav {
+  padding-right: 0;
   display: flex;
+  border: #000000 solid 1px;
+  transform: translateX(calc(100% + 1rem));
 }
 
-/* WENN die Checkbox aktiviert ist, tausche die Icons im Button aus */
+.menu-hack-checkbox:checked ~ .full-screen-nav {
+  transform: translateX(0); /* slide into view */
+}
+
 .menu-hack-checkbox:checked ~ .menu-toggle-btn .icon-open {
   display: none; /* Verstecke Hamburger */
 }
@@ -355,23 +387,21 @@ body {
 /* --- Styling für die Menü-Links --- */
 .full-screen-nav ul {
   list-style: none;
-  padding: 25px;
+  margin-right: 1rem;
+  margin-top: 2rem;
+  padding: 0;
+  padding-top: calc(10.5vh - 2rem);
   text-align: right;
 }
 
-.full-screen-nav li {
-  margin: 25px 0;
-}
-
 .full-screen-nav a {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: 20px;
-  font-weight: bold;
+  font-size: 18px;
   transition: color 0.2s;
 }
 
 .full-screen-nav a:hover {
   color: #cbc3de; /* Grüner Hover-Effekt */
-  font-size: 21px
+  font-size: 19px
 }
