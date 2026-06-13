@@ -25,6 +25,8 @@ header {
 
 
 section {
+  position: relative;
+  min-height: 100vh;
   height: 100vh;
   padding-top: calc(var(--header-height) + 2rem);
   display: flex;
@@ -32,6 +34,47 @@ section {
   align-items: center;
   background-color: rgb(235, 235, 235);
   overflow: hidden; /* keep each section's content inside its own box */
+}
+
+.strobo-box {
+  width: 100vw;
+  height: 100vh;
+}
+
+.popup-note {
+  position: absolute;
+  top: 12rem;
+  left: 50%;
+  opacity: 0;
+  visibility: hidden;
+  transform: translate(-50%, -0.5rem);
+  padding: 4rem 4rem;
+  background: rgb(244, 244, 244);
+  color: rgb(0, 0, 0), 0, 0;
+  font-family:monospace;
+  font-size: 1.5rem;
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 5;
+}
+
+.popup-note.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.random-circle {
+  position: absolute;
+  top: 4rem;
+  left: 2rem;
+  width: 6rem;
+  height: 6rem;
+  border-radius: 50%;
+  background-image: url('https://svgsilh.com/svg/24629.svg');
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: left 0.50s ease, top 0.50s ease;
+  z-index: 2;
 }
 
 ul {
@@ -151,6 +194,326 @@ h1 {
 
 .my-new-button-5:hover {
   transform: scale(0.2);
+  transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
+  color:white;
+}
+
+.section-16-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.section-16-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.section-18-column {
+  display: inline-grid;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.section-18-row .checkbox-choice {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.section-19-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 38rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.section-19-column .checkbox-choice {
+  display:flex;
+  flex-direction:grid;
+  align-items: left;
+  gap: 0.5rem;
+}
+
+.section-20-column {
+  display: inline-grid;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.section-20-column .checkbox-choice {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.section-21-column {
+  display: inline-grid;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.section-21-column .checkbox-choice {
+  position: relative;
+  padding: 0.35rem 0.5rem;
+  border-radius: 0.75rem;
+  transition: transform 0.18s ease, background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.section-21-column .checkbox-choice:hover {
+  transform: scale(1.01);
+  background-color: rgba(124, 124, 255, 0.16);
+  box-shadow: 0 0 0 2px var(--purple-blue), 0 10px 18px rgba(0, 0, 0, 0.18);
+  z-index: 1;
+  cursor:text
+}
+
+.checkbox-choice {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 1.5rem;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #000;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.1;
+}
+
+.checkbox-choice input[type="checkbox"] {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #000;
+  border-radius: 0.2rem;
+  background: white;
+  cursor:grab;
+}
+
+.checkbox-choice input[type="checkbox"]:checked {
+  background: var(--purple-blue);
+  border-color: var(--purple-blue);
+  box-shadow: inset 0 0 0 2px rgb(255, 255, 255);
+}
+
+.checkbox-choice-2 {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 1.5rem;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #000;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.1;
+}
+
+.checkbox-choice-2 input[type="checkbox"] {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #000;
+  border-radius: 0.2rem;
+  background: white;
+  cursor:grab;
+}
+
+.checkbox-choice-2 input[type="checkbox"]:checked {
+  background: var(--purple-blue);
+  border-color: var(--purple-blue);
+  transform: scale(4);
+  position: relative;
+}
+
+.checkbox-choice-2 input[type="checkbox"]:checked::after {
+  content: "✕";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.checkbox-choice-3 {
+  display: grid;
+  grid-template-columns: 1.5rem auto;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 1.5rem;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #000;
+  text-align: left;
+  white-space: normal;
+  line-height: 1.1;
+}
+
+.checkbox-choice-3 input[type="checkbox"] {
+  appearance: none;
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #000;
+  border-radius: 0.2rem;
+  background: white;
+  cursor:grab;
+}
+
+.checkbox-choice-3:hover input[type="checkbox"] {
+  width: 1.5rem;
+  height: 1.5rem;
+  border: 2px solid #000;
+  border-radius: 0.2rem;
+  background: rgb(230, 255, 189);
+}
+
+.checkbox-choice-3 input[type="checkbox"]:checked {
+  background: var(--purple-blue);
+  border-color: var(--purple-blue);
+  transform: translateX(100%) scale(5);
+  position: relative;
+}
+
+.checkbox-choice-3 input[type="checkbox"]:checked::after {
+  content: "-";
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: white;
+  font-size: 1rem;
+  line-height: 1;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:end;
+  gap: 4rem;
+  width: 100%;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.section-17-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 16rem;
+}
+
+.my-new-button-6 {
+  display: inline-block;
+  margin: 0;
+  padding: 1rem 2rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.my-new-button-6:hover {
+  background-color: var(--purple-blue);
+  transform: scale(1.05);
+  transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
+  color:white;
+}
+
+.my-new-button-7 {
+  display: inline-block;
+  margin: 0;
+  padding: 1rem 2rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.my-new-button-7:hover {
+  background-color: rgb(235, 235, 235);
+  transform: scale(1.05);
+  transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
+  color:white;
+}
+
+.my-new-button-8 {
+  display: inline-block;
+  width: 3rem;
+  max-width: 3rem;
+  overflow: hidden;
+  margin: 0;
+  padding: 0.75rem 0.5rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 0.9rem;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.my-new-button-8:hover {
+  background-color: var(--purple-blue);
+  transform: scale(1.05);
+  transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
+  color:white;
+}
+
+.my-new-button-9 {
+  display: inline-block;
+  width: 10rem;
+  overflow: hidden;
+  margin: 0;
+  padding: 0.75rem 0.5rem;
+  background-color: black;
+  color: white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.my-new-button-9:hover {
+  transform: scale(4);
   transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
   color:white;
 }
@@ -291,8 +654,83 @@ h1 {
 #my-range7-value {
   font-family: monospace;
   font-size: 2rem;
-  font-weight:normal;
-  self-align: center;
+  font-weight: normal;
+  align-self: center;
+}
+
+#section-29-input,
+.address-grid input {
+  width: min(28rem, calc(100% - 2rem));
+  height: 3rem;
+  padding: 0.75rem 1rem;
+  justify-self: top;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #000;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+#section-29-input:focus,
+.address-grid input:focus {
+  outline: 3px solid var(--purple-blue);
+  outline-offset: 2px;
+}
+
+#section-30-input {
+  width: min(28rem, calc(100% - 2rem));
+  height: 3rem;
+  padding: 0.75rem 1rem;
+  justify-self: top;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #000;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+#section-30-input:focus {
+  outline: 3px solid var(--purple-blue);
+  outline-offset: 2px;
+}
+
+.address-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+.letter-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 0.75rem;
+}
+
+.letter-field {
+  width: 3rem;
+  height: 3rem;
+  padding: 0.75rem 1rem;
+  justify-self: top;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #000;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.letter-field:focus {
+  outline: 3px solid var(--purple-blue);
+  outline-offset: 2px;
+}
+
+.address-grid input {
+  width: 100%;
 }
 
 .text {
@@ -329,32 +767,50 @@ body {
   padding: 40px 20px;
 }
 
-/* --- DER HACK: Checkbox unsichtbar machen --- */
 .menu-hack-checkbox {
-  display: none; /* Die echte HTML-Checkbox wird versteckt */
+  display: none; 
 }
 
-/* --- Hamburger-Button (Label) oben rechts fixieren --- */
 .menu-toggle-btn {
-  position: fixed;
-  top: 8vh;
-  transform: translateY(-50%);
-  right: 2rem;
-  z-index: 100; /* Immer ganz oben über dem Menü */
-  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(75%);
+  width: 2.2rem;
+  height: 2.2rem;
+  font-size: 24px;
   cursor: pointer;
   user-select: none;
-  padding: 5px;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
-/* Standard: Zeige Hamburger (☰), verstecke das X (✕) */
+.menu-toggle-btn--open {
+  position: fixed;
+  top: 2%;
+  right: 2rem;
+  z-index: 100;
+}
+
 .menu-toggle-btn .icon-close {
   display: none;
-  color: rgb(0, 0, 0); 
+  color: rgb(0, 0, 0);
+  line-height: 1;
 }
+
 .menu-toggle-btn .icon-open {
   display: inline;
   color: black;
+  line-height: 1;
+}
+
+.menu-hack-checkbox:checked ~ .full-screen-nav .icon-close {
+  display: inline;
+}
+
+.menu-hack-checkbox:checked ~ .full-screen-nav .icon-open {
+  display: none;
 }
 
 .full-screen-nav {
@@ -362,36 +818,45 @@ body {
   top: 1rem;
   right: 1rem;
   width: 15rem;
-  height: 100vh;     /* Randabfallend: Ganze Höhe des Bildschirms */
+  height: calc(100vh - 2rem);
+  max-height: calc(100vh - 2rem);
+  overflow: hidden;
   background: white;
-  z-index: 90;       /* Hinter dem Button, aber über dem Content */
-  justify-content: right;
-  align-items: right;
-  padding-right: 0;
+  z-index: 90;
   display: flex;
-  border: #000000 solid 1px;
+  flex-direction: column;
+  border: 1px solid #000;
   transform: translateX(calc(100% + 1rem));
 }
 
 .menu-hack-checkbox:checked ~ .full-screen-nav {
-  transform: translateX(0); /* slide into view */
+  transform: translateX(0);
 }
 
-.menu-hack-checkbox:checked ~ .menu-toggle-btn .icon-open {
-  display: none; /* Verstecke Hamburger */
-}
-.menu-hack-checkbox:checked ~ .menu-toggle-btn .icon-close {
-  display: inline; /* Zeige das X */
+.menu-hack-checkbox:checked ~ .menu-toggle-btn--open {
+  display: none;
 }
 
-/* --- Styling für die Menü-Links --- */
+.full-screen-nav-header {
+  display: flex;
+  align-items: flex;
+  justify-content: flex-end;
+  width: 100%;
+  min-height: 4rem;
+  padding: 0 0.75rem 0.25rem 0.75rem;
+  border-bottom: 1px solid #ffffff;
+  background: white;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
 .full-screen-nav ul {
   list-style: none;
-  margin-right: 1rem;
-  margin-top: 2rem;
-  padding: 0;
-  padding-top: calc(10.5vh - 2rem);
+  margin: 0;
+  padding: 1rem 1rem 1rem 0;
   text-align: right;
+  overflow-y: auto;
+  flex: 1;
 }
 
 .full-screen-nav a {

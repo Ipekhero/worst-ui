@@ -82,3 +82,89 @@
       const section = myRange7.closest('section')
       myRange7Value.textContent = myRange7.value
     })
+
+    let isBlack = 1;
+
+    setInterval(() => {
+      if (isBlack) {
+        document.getElementById('disco').style.backgroundColor = 'hsl(0, 0%, 92%)';
+        isBlack = 0;
+      } else {
+        document.getElementById('disco').style.backgroundColor = 'black';
+        isBlack = 1;
+      }
+    }, 100);
+
+    const discoButton = document.querySelector('.my-new-button-9');
+    let discoHoverTimer = null;
+    let discoHoverState = true;
+
+    function startDiscoHover(element) {
+      clearInterval(discoHoverTimer);
+      discoHoverTimer = setInterval(() => {
+        element.style.backgroundColor = discoHoverState ? 'hsl(0, 0%, 92%)' : 'black';
+        discoHoverState = !discoHoverState;
+      }, 200);
+    }
+
+    if (discoButton) {
+      discoButton.addEventListener('mouseenter', () => {
+        discoHoverState = true;
+        startDiscoHover(discoButton);
+      });
+
+      discoButton.addEventListener('mouseleave', () => {
+        clearInterval(discoHoverTimer);
+        discoButton.style.backgroundColor = 'black';
+      });
+    }
+
+    const randomCircle = document.getElementById('random-circle');
+
+    function moveRandomCircle() {
+      if (!randomCircle) return;
+
+      const section = randomCircle.closest('section');
+      if (!section) return;
+
+      const circleSize = randomCircle.offsetWidth;
+      const maxX = Math.max(0, section.clientWidth - circleSize);
+      const maxY = Math.max(0, section.clientHeight - circleSize);
+
+      const randomX = Math.floor(Math.random() * (maxX + 1));
+      const randomY = Math.floor(Math.random() * (maxY + 1));
+
+      randomCircle.style.left = `${randomX}px`;
+      randomCircle.style.top = `${randomY}px`;
+      randomCircle.style.transform = 'none';
+    }
+
+    if (randomCircle) {
+      randomCircle.addEventListener('click', moveRandomCircle);
+      moveRandomCircle();
+    }
+
+    const popupNote = document.getElementById('section27-popup');
+
+    if (popupNote) {
+      popupNote.classList.remove('show');
+      setTimeout(() => {
+        popupNote.classList.add('show');
+      }, 2000);
+    }
+
+    const section28Checkboxes = document.querySelectorAll('#section-28 input[type="checkbox"]');
+
+    if (section28Checkboxes.length) {
+      section28Checkboxes.forEach((checkbox) => {
+        checkbox.checked = false;
+      });
+
+      setTimeout(() => {
+        section28Checkboxes[0].checked = true;
+      }, 2000);
+
+      setTimeout(() => {
+        section28Checkboxes[1].checked = true;
+      }, 2200);
+    }
