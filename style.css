@@ -77,13 +77,436 @@ section {
   z-index: 2;
 }
 
-ul {
-  list-style: none;
-  padding: 2rem;
+.dropdown {
+  position: relative; /* just a positioning wrapper for the menu */
+  width: 30rem;
+  font-family: monospace;
+  font-size: 1rem;
+  cursor: pointer;
 }
 
+.dropdown:active:not(.click-dropdown) .dropdown-menu {
+  display: block;
+}
+
+.click-dropdown.open .dropdown-menu {
+  display: block;
+}
+
+#section-39-dropdown .dropdown-menu {
+  top: auto;
+  bottom: 100%;
+  padding:1rem;
+  max-height: 14rem; /* cap the height so the rest of the items scroll */
+  overflow-y: auto;
+}
+
+.dropdown-menu {
+  list-style: none;
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  overflow:scroll;
+  z-index: 10;
+  display: none;
+}
+
+.dropdown-trigger {
+  padding: 0.75rem 2rem;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+.dropdown-menu li {
+  padding: 0.5rem 2rem;
+  margin: 0;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+  background: var(--purple-blue);
+  color: #fff;
+}
+
+/* section 45: lay the dropdowns out in two columns */
+.dropdown-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.5rem 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* tighten the labels so all six dropdowns fit in the section */
+.dropdown-grid .text {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 1rem;
+}
+
+.hover-dropdown {
+  position: relative;
+  width: 20rem;
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+.hover-dropdown-trigger {
+  padding: 0.75rem 2rem;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+}
+
+/* once an item is chosen, the trigger shows the selected state */
+.hover-dropdown-trigger.selected {
+  background: var(--purple-blue);
+  color: #fff;
+  border-color: var(--purple-blue);
+}
+
+.hover-dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  overflow: hidden;
+  z-index: 10;
+  /* hidden until the dropdown is hovered */
+  display: none;
+}
+
+.hover-dropdown:hover .hover-dropdown-menu {
+  display: block;
+}
+
+.hover-dropdown-menu li {
+  padding: 0.5rem 2rem;
+  margin: 0;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.hover-dropdown-menu li:hover {
+  background: var(--purple-blue);
+  color: #000000;
+}
+
+/* section 42: a row of square cards that vanish on click */
+.card-grid {
+  display: flex;
+  gap: .5rem;
+  margin-top: 2rem;
+}
+
+.card {
+  width: 8rem;
+  height: 8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: black;
+  font-family: monospace;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 1s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-1rem);
+  background: var(--purple-blue);
+  color: #fff;
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+
+}
+
+.card.hidden {
+  visibility: hidden;
+}
+
+/* section 44: cards that are checkboxes; checking makes them giant */
+.checkbox-card {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: monospace;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+.checkbox-card input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  accent-color: var(--purple-blue);
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.checkbox-card input[type="checkbox"]:checked {
+  transform: scale(6);
+}
+
+.card2 {
+  width: 16rem;
+  height: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: black;
+  font-family: monospace;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 1s ease, background-color 0.3s ease, color 0.3s ease;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+}
+
+.card2:hover {
+  transform: translateY(-1rem);
+  background: var(--purple-blue);
+  color: #fff;
+  transform: rotate(90deg) translateY(-1rem);
+}
+
+.card3 {
+  width: 16rem;
+  height: 16rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  color: black;
+  font-family: monospace;
+  font-size: 1rem;
+  border-radius: 0.75rem;
+  cursor: pointer;
+  transition: transform 1s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.card3:hover {
+  background: var(--purple-blue);
+  color: #fff;
+  transform: translateY(-1rem);
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.18);
+
+}
+
+/* the checkbox inside a card3 grows giant when checked */
+.card3 input[type="checkbox"] {
+  width: 2rem;
+  height: 2rem;
+  accent-color: var(--purple-blue);
+  cursor: pointer;
+  transform-origin: center;
+  transition: transform 0.3s ease;
+}
+
+.card3 input[type="checkbox"]:checked {
+  transform: scale(5);
+}
+
+.section44-continue {
+  margin-top: 10rem;
+}
+
+/* section 50: black background with a 100px round gray cursor */
+#section-50-area {
+  background: #000;
+  color: #fff;
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Ccircle cx='50' cy='50' r='48' fill='%23ebebeb'/%3E%3C/svg%3E") 50 50, auto;
+}
+
+#section-50-area h2 {
+  color: #fff;
+}
+
+/* gap between the inputs and the Continue button in section 46 */
+.section46-continue {
+  margin-top: 4rem;
+  align-self: flex-end; /* push the button to the right edge of the section */
+  margin-right: 10rem;
+}
+
+/* section 46: a giant black cursor that hides what you're selecting */
+#giant-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: #000;
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* never blocks clicks */
+  z-index: 9999;
+  display: none; /* only shown over section 46 */
+}
+
+.giant-cursor-active {
+  cursor: none; /* hide the real cursor */
+}
+
+/* section 47: input flips colors with every letter typed */
+#section-47-input.inverted {
+  background: #000;
+  color: #fff;
+}
+
+.segmented-toggle {
+  display: inline-flex;
+  margin-top: 2rem;
+  border: 2px solid #000;
+  border-radius: 2rem;
+  overflow: hidden;
+  font-family: monospace;
+  font-size: 1.25rem;
+}
+
+.segmented-toggle input[type="radio"] {
+  display: none;
+}
+
+.segmented-toggle label {
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  background: #fff;
+  color: #000;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+/* hover feedback on a segment */
+.segmented-toggle label:hover {
+  background: rgba(124, 124, 255, 0.25);
+}
+
+/* divider line before each segment except the first */
+.segmented-toggle label + input + label {
+  border-left: 2px solid #000;
+}
+
+/* highlight the segment whose radio is checked */
+.segmented-toggle input[type="radio"]:checked + label {
+  background: var(--purple-blue);
+  color: #fff;
+}
+
+/* section 48: light / dark mode toggle */
+.mode-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  font-family: monospace;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* hide the real checkbox; we draw our own switch */
+#mode-toggle-checkbox {
+  display: none;
+}
+
+.mode-toggle-track {
+  width: 4rem;
+  height: 2rem;
+  border-radius: 1rem;
+  background: #ccc;
+  border: 2px solid #000;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.mode-toggle-thumb {
+  position: absolute;
+  top: 0.15rem;
+  left: 0.15rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  background: #000;
+  transition: left 0.3s ease, background 0.3s ease;
+}
+
+#mode-toggle-checkbox:checked ~ .mode-toggle-track {
+  background: #000000;
+}
+
+#mode-toggle-checkbox:checked ~ .mode-toggle-track .mode-toggle-thumb {
+  left: 2.2rem;
+  background: #fff;
+}
+
+/* dark mode applied to the section */
+#section-48-area.dark {
+  background: #111;
+  color: #fff;
+}
+
+#section-48-area.dark h2,
+#section-48-area.dark .text,
+#section-48-area.dark .mode-toggle {
+  color: #000000;
+}
+
+.address-form {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 0.75rem 2rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.address-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-family: monospace;
+  font-size: 1rem;
+  color: #838383;
+  text-align: right;
+}
+
+.card-2.hidden {
+  visibility: hidden;
+}
+
+.moving-form {
+  position: absolute;
+  top: 12rem;
+  left: 2rem;
+  transition: left 0.50s ease, top 0.50s ease;
+  z-index: 2;
+}
+
+
+
 li {
-  margin-bottom: 1rem;
   font-family: "Bitcount Grid Double";
   color: black;
   font-size: large;
@@ -139,7 +562,8 @@ h1 {
 }
 
 .my-new-button-2:hover {
-  background:white
+  background:rgb(235, 235, 235);
+  color:rgb(235, 235, 235);
 }
 
 .my-new-button-3 {
@@ -197,6 +621,54 @@ h1 {
   transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
   color:white;
 }
+
+.my-new-button-6 {
+  margin-top: 4rem;
+  display: inline-block;
+  margin-top: 4rem;
+  margin-left: 1.8rem;
+  padding: 1rem 8rem;
+  background-color: black;
+  color:white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: x-small;
+}
+
+.my-new-button-6:hover {
+  transform: scale(0.2);
+  transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
+  color:var(--purple-blue);
+ } 
+
+ .my-new-button-7 {
+  margin-top: 4rem;
+  display: inline-block;
+  margin-top: 4rem;
+  width: 100vw;
+  padding: 1rem 8rem;
+  background-color: black;
+  color:white;
+  text-decoration: none;
+  font-family: monospace;
+  font-size: 1rem;
+  text-align: center;
+  transition: transform 0.6s cubic-bezier(0.7, 0.7, 0.7, 0.94), color 0.3s ease;
+}
+
+ .my-new-button-7:hover {
+  margin-top: 4rem;
+  display: inline-block;
+  margin-top: 4rem;
+  width: 100vw;
+  padding: 1rem 8rem;
+  background-color: var(--purple-blue);
+}
+
+.my-new-button-7:active {
+  transform: scale(0.95) translateY(-100vh);
+  color:var(--purple-blue);
+ }
 
 .section-16-row {
   display: flex;
@@ -268,6 +740,16 @@ h1 {
 
 .section-21-column {
   display: inline-grid;
+  gap: 0.75rem;
+  width: 100%;
+  max-width: 32rem;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.section-34-column {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.75rem;
   width: 100%;
   max-width: 32rem;
@@ -351,7 +833,7 @@ h1 {
 .checkbox-choice-2 input[type="checkbox"]:checked {
   background: var(--purple-blue);
   border-color: var(--purple-blue);
-  transform: scale(4);
+  transform: scale(3);
   position: relative;
 }
 
@@ -451,25 +933,6 @@ h1 {
 
 .my-new-button-6:hover {
   background-color: var(--purple-blue);
-  transform: scale(1.05);
-  transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
-  color:white;
-}
-
-.my-new-button-7 {
-  display: inline-block;
-  margin: 0;
-  padding: 1rem 2rem;
-  background-color: black;
-  color: white;
-  text-decoration: none;
-  font-family: monospace;
-  font-size: 1rem;
-  text-align: center;
-}
-
-.my-new-button-7:hover {
-  background-color: rgb(235, 235, 235);
   transform: scale(1.05);
   transition: cubic-bezier(0.7, 0.7, 0.7, 0.94);
   color:white;
@@ -724,6 +1187,25 @@ h1 {
   line-height: 1.4;
 }
 
+.input-field {
+  width: 20rem;
+  height: 3rem;
+  padding: 0.75rem 1rem;
+  justify-self: top;
+  border: 1px solid #000;
+  border-radius: 0.75rem;
+  background: #fff;
+  color: #000;
+  font-family: monospace;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+/* gap between the input field and the button in section 32 */
+.section-32 .input-field {
+  margin-bottom: 1.5rem;
+}
+
 .letter-field:focus {
   outline: 3px solid var(--purple-blue);
   outline-offset: 2px;
@@ -817,7 +1299,7 @@ body {
   position: fixed;
   top: 1rem;
   right: 1rem;
-  width: 15rem;
+  width: 20rem;
   height: calc(100vh - 2rem);
   max-height: calc(100vh - 2rem);
   overflow: hidden;
@@ -853,20 +1335,87 @@ body {
 .full-screen-nav ul {
   list-style: none;
   margin: 0;
-  padding: 1rem 1rem 1rem 0;
-  text-align: right;
+  padding: 1rem 0 1rem 1rem;
+  text-align: left;
   overflow-y: auto;
   flex: 1;
+}
+
+/* gap between hamburger menu items */
+.full-screen-nav li {
+  margin-bottom: 1rem;
 }
 
 .full-screen-nav a {
   color: rgb(0, 0, 0);
   text-decoration: none;
-  font-size: 18px;
+  font-size: 16px;
   transition: color 0.2s;
 }
 
 .full-screen-nav a:hover {
-  color: #cbc3de; /* Grüner Hover-Effekt */
-  font-size: 19px
+  color: var(--purple-blue);
+}
+
+.finishButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin: auto;                
+  background: rgb(0, 0, 0);
+  width: 100px;
+  height: 100px;
+  color: #000000;
+  font-size: 3rem;       
+  border-radius: 50%;
+  text-decoration: none;
+}
+.finishButton:hover{
+  background: var(--purple-blue);
+  color:#ffffff;
+  border-radius: 100rem;
+  justify-self: center;
+  padding: 1rem 2rem;
+}
+/* confetti pieces for the finish button */
+.confetti-piece {
+  position: fixed;
+  width: 10px;
+  height: 14px;
+  border-radius: 2px;
+  pointer-events: none;
+  z-index: 10000;
+}
+
+#section-arrows {
+  position: fixed;
+  right: 1.5rem;
+  bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  z-index: 95;
+}
+
+#section-arrows button {
+  width: 3rem;
+  height: 3rem;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #000;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+#section-arrows button:hover {
+  background: var(--purple-blue);
+  color: #fff;
+}
+
+/* highlight the menu item for the section you're currently viewing */
+.full-screen-nav a.active {
+  color: var(--purple-blue);
+  font-weight: bold;
 }
